@@ -4,17 +4,22 @@ import { CloudSunRain, List, SlidersHorizontal, Wind } from "lucide-react";
 import { Lato } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { HTMLAttributes } from "react";
 
 // fonts
 const lato = Lato({ weight: "400", subsets: ["latin"] });
 
-const Navbar: React.FC = () => {
+interface NavbarProps extends HTMLAttributes<HTMLDivElement> {}
+
+const Navbar: React.FC<NavbarProps> = ({ ...props }) => {
   const pathname = usePathname();
   const url = pathname.split("/")[2];
 
   return (
-    <div className="flex flex-col items-center bg-[var(--primary-bg-color)] h-full px-1 py-3 lg:px-3 lg:py-5 rounded-2xl md:rounded-[var(--primary-border-radius)]">
+    <div
+      {...props}
+      className="flex flex-col items-center bg-[var(--primary-bg-color)] h-full px-1 py-3 lg:px-3 lg:py-5 rounded-2xl md:rounded-[var(--primary-border-radius)]"
+    >
       {/* logo */}
       <div className="bg-[var(--secondary-bg-color)] aspect-square p-1 rounded-xl">
         <Wind className="w-8 h-8" />

@@ -1,21 +1,30 @@
 import { formatDateTime } from "@/lib/formatDateTime";
 import { replaceDimensions } from "@/lib/replaceDimensions";
-import { CloudRain, Milestone, Sun, Thermometer, Wind } from "lucide-react";
-import { Lato } from "next/font/google";
+import { CloudRain, Sun, Thermometer, Wind } from "lucide-react";
+import { lato } from "@/fonts/lato";
 import Image from "next/image";
+import MoreWeatherInfoCard from "./MoreWeatherInfoCard";
+
+// local icons
+import HumidityIcon from "@/../public/humidity.png";
+import SunriseIcon from "@/../public/sunrise.png";
+import SunsetIcon from "@/../public/sunset.png";
 
 interface MainWeatherSectionProps {
   weather: WeatherData;
 }
-
-const lato = Lato({ weight: "700", subsets: ["latin"] });
-const lato2 = Lato({ weight: "400", subsets: ["latin"] });
 
 const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
   const { location } = weather;
   const { current } = weather;
   const { forecast } = weather;
   const chancesOfRain = forecast.forecastday[0].day.daily_chance_of_rain;
+
+  // second section data
+  const sunrise = forecast.forecastday[0].astro.sunrise;
+  const sunset = forecast.forecastday[0].astro.sunset;
+  const humidity = current.humidity;
+
   // modifiers
   const biggerIcon = replaceDimensions(current.condition.icon);
 
@@ -26,20 +35,20 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
         <div className="flex flex-col justify-between">
           <div>
             <h1
-              className={`${lato.className} text-[2rem] text-[var(--lightgray-text-color)]`}
+              className={`${lato.className} text-[1.5rem] md:text-[2rem] text-[var(--lightgray-text-color)]`}
             >
               {location.name}
             </h1>
             <p className="text-[var(--lightgray-text-color)] text-sm">{`${
               location.region
             } ${location.region !== "" ? "," : ""} ${location.country}`}</p>
-            <p className="text-sm text-[var(--gray-text-color)]">
+            <p className="text-xs md:text-sm text-[var(--gray-text-color)]">
               {formatDateTime(location.localtime)}
             </p>
           </div>
           <div>
             <h1
-              className={`${lato.className} text-[3rem] text-[var(--selected-text-color)]`}
+              className={`${lato.className} text-[2rem] md:text-[3rem] text-[var(--selected-text-color)]`}
             >
               {current.temp_c}°
             </h1>
@@ -51,21 +60,38 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
             alt="Weather condition"
             width={128}
             height={128}
-            className="w-[5rem]"
+            className="w-[5rem] md:w-[7rem]"
           />
-          <p className={`${lato.className} text-[var(--lightgray-text-color)]`}>
+          <p
+            className={`${lato.className} text-[var(--lightgray-text-color)] lg:text-xl`}
+          >
             {current.condition.text}
           </p>
         </div>
       </div>
 
-      {/*  ********************Today's forecast ******************** */}
-      <div className="h-[30%] bg-[var(--primary-bg-color)] rounded-[var(--primary-border-radius)] px-3 py-2 lg:px-6 lg:py-4">
-        Child 2
+      {/*  ********************more info section ******************** */}
+      <div className="flex justify-around h-[25%] bg-[var(--primary-bg-color)] rounded-[var(--primary-border-radius)] px-3 py-2 lg:px-6 lg:py-4">
+        {/* Humidity */}
+        <MoreWeatherInfoCard
+          icon={HumidityIcon}
+          title="Humidity"
+          value={`${humidity}%`}
+        />
+
+        {/* Sunrise */}
+        <MoreWeatherInfoCard
+          icon={SunriseIcon}
+          title="Sunrise"
+          value={sunrise}
+        />
+
+        {/* Sunset */}
+        <MoreWeatherInfoCard icon={SunsetIcon} title="Sunset" value={sunset} />
       </div>
 
       {/* ******************** Wind section ******************** */}
-      <div className="h-[40%] bg-[var(--primary-bg-color)] rounded-[var(--primary-border-radius)] px-3 py-9 lg:px-6 lg:py-4">
+      <div className="h-[45%] bg-[var(--primary-bg-color)] rounded-[var(--primary-border-radius)] px-3 py-9 lg:px-6 lg:py-4">
         <h1
           className={`${lato.className} text-sm text-[var(--gray-text-color)] pb-2`}
         >
