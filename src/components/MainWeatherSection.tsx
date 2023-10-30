@@ -71,12 +71,13 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
       </div>
 
       {/*  ********************more info section ******************** */}
-      <div className="flex justify-around h-[25%] bg-[var(--primary-bg-color)] rounded-[var(--primary-border-radius)] px-3 py-2 lg:px-6 lg:py-4">
+      <div className="flex justify-around h-[25%] bg-[var(--primary-bg-color)] rounded-[var(--primary-border-radius)] px-6 py-4">
         {/* Humidity */}
         <MoreWeatherInfoCard
           icon={HumidityIcon}
           title="Humidity"
           value={`${humidity}%`}
+          alt="Humidity"
         />
 
         {/* Sunrise */}
@@ -84,10 +85,16 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
           icon={SunriseIcon}
           title="Sunrise"
           value={sunrise}
+          alt="Sunrise"
         />
 
         {/* Sunset */}
-        <MoreWeatherInfoCard icon={SunsetIcon} title="Sunset" value={sunset} />
+        <MoreWeatherInfoCard
+          icon={SunsetIcon}
+          title="Sunset"
+          value={sunset}
+          alt="Sunset"
+        />
       </div>
 
       {/* ******************** Wind section ******************** */}
@@ -105,7 +112,7 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
               <p className="text-sm font-semibold">Real Feel</p>
             </div>
             <h1
-              className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl md:pl-8`}
+              className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl pl-8`}
             >
               {current.feelslike_c}°
             </h1>
@@ -118,7 +125,7 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
               <p className="text-sm font-semibold">Wind</p>
             </div>
             <h1
-              className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl md:pl-8`}
+              className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl pl-8`}
             >
               {current.wind_kph}km/h
             </h1>
@@ -131,7 +138,7 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
               <p className="text-sm font-semibold">Chance of Rain</p>
             </div>
             <h1
-              className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl md:pl-8`}
+              className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl pl-8`}
             >
               {chancesOfRain}%
             </h1>
@@ -144,7 +151,7 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
               <p className="text-sm font-semibold">UV Index</p>
             </div>
             <h1
-              className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl md:pl-8`}
+              className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl pl-8`}
             >
               {current.uv}
             </h1>

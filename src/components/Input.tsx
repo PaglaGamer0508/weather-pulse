@@ -11,7 +11,7 @@ const Input = () => {
       value={searchInput}
       type="text"
       placeholder="Search for cities"
-      className="w-full lg:w-[65%] h-full bg-[var(--primary-bg-color)] rounded-xl focus:outline-none px-3 pb-1 placeholder:text-[var(--selected-text-color)]"
+      className="w-full h-full bg-[var(--primary-bg-color)] rounded-xl focus:outline-none px-3 pb-1 placeholder:text-[var(--selected-text-color)]"
     />
   );
 };

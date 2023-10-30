@@ -1,6 +1,7 @@
 "use client";
 
-import { CloudSunRain, List, SlidersHorizontal, Wind } from "lucide-react";
+import { useMenuBarStore } from "@/state/MenuBarState";
+import { CloudSunRain, List, Settings, Wind } from "lucide-react";
 import { Lato } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,8 +13,8 @@ const lato = Lato({ weight: "400", subsets: ["latin"] });
 interface NavbarProps extends HTMLAttributes<HTMLDivElement> {}
 
 const Navbar: React.FC<NavbarProps> = ({ ...props }) => {
-  const pathname = usePathname();
-  const url = pathname.split("/")[2];
+  const pathname = usePathname().split("/")[2];
+  const { closeMenu } = useMenuBarStore();
 
   return (
     <div
@@ -29,41 +30,52 @@ const Navbar: React.FC<NavbarProps> = ({ ...props }) => {
         className={`${lato.className} text-[var(--gray-text-color)] text-sm space-y-7 mt-10`}
       >
         {/* Weather */}
-        <Link
-          href={"/app/weather"}
-          className={`flex flex-col items-center ${
-            url === "weather"
-              ? `text-[var(--selected-text-color)] font-semibold`
-              : ""
-          }`}
+
+        <div
+          onClick={() => closeMenu()}
         >
-          <CloudSunRain className="w-5 h-5" />
-          <p>Weather</p>
-        </Link>
+          <Link
+            href={"/app/weather"}
+            className={`flex flex-col items-center ${
+              pathname === "weather"
+                ? `text-[var(--selected-text-color)] font-semibold`
+                : ""
+            }`}
+          >
+            <CloudSunRain className="w-5 h-5" />
+            <p>Weather</p>
+          </Link>
+        </div>
+
         {/* Cities */}
-        <Link
-          href={"/app/cities"}
-          className={`flex flex-col items-center ${
-            url === "cities"
-              ? `text-[var(--selected-text-color)] font-semibold`
-              : ""
-          }`}
-        >
-          <List className="w-5 h-5" />
-          <p>Cities</p>
-        </Link>
+        <div onClick={() => closeMenu()}>
+          <Link
+            href={"/app/cities"}
+            className={`flex flex-col items-center ${
+              pathname === "cities"
+                ? `text-[var(--selected-text-color)] font-semibold`
+                : ""
+            }`}
+          >
+            <List className="w-5 h-5" />
+            <p>Cities</p>
+          </Link>
+        </div>
+
         {/* Settings */}
-        <Link
-          href={"/app/settings"}
-          className={`flex flex-col items-center ${
-            url === "settings"
-              ? `text-[var(--selected-text-color)] font-semibold`
-              : ""
-          }`}
-        >
-          <SlidersHorizontal className="w-5 h-5" />
-          <p>Settings</p>
-        </Link>
+        <div onClick={() => closeMenu()}>
+          <Link
+            href={"/app/settings"}
+            className={`flex flex-col items-center ${
+              pathname === "settings"
+                ? `text-[var(--selected-text-color)] font-semibold`
+                : ""
+            }`}
+          >
+            <Settings className="w-5 h-5" />
+            <p>Settings</p>
+          </Link>
+        </div>
       </div>
     </div>
   );

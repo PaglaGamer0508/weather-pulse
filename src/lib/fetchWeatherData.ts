@@ -2,7 +2,6 @@ const apiKey = process.env.WEATHER_API_KEY;
 
 export const fetchWeatherData = async (location: string) => {
   const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&aqi=no`;
-  console.log(apiUrl)
   try {
     const response = await fetch(apiUrl);
 

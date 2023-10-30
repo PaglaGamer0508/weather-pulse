@@ -6,12 +6,14 @@ interface MoreWeatherInfoCardProps {
   title: string;
   icon: StaticImageData;
   value: string;
+  alt: string;
 }
 
 const MoreWeatherInfoCard: React.FC<MoreWeatherInfoCardProps> = ({
   icon,
   title,
   value,
+  alt,
 }) => {
   return (
     <div className="flex flex-col items-center">
@@ -22,7 +24,7 @@ const MoreWeatherInfoCard: React.FC<MoreWeatherInfoCardProps> = ({
       </p>
       <Image
         src={icon}
-        alt="humidity"
+        alt={alt}
         width={128}
         height={128}
         className="w-10 lg:w-14 h-10 lg:h-14"
