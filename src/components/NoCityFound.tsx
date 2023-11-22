@@ -11,6 +11,8 @@ const NoCityFound: React.FC = () => {
         <Image
           src={NotFound}
           alt="Not Found"
+          height={410}
+          width={512}
           className="w-[80%] md:w-[60%] mx-auto"
         />
         <h1 className="text-blue-500 text-2xl font-bold text-center">
