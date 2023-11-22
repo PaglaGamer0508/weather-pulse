@@ -20,7 +20,7 @@ const TodayForecastCard: React.FC<TodayForecastCardProps> = ({
 }) => {
   return (
     <div className={`flex justify-between items-center ${lato.className}`}>
-      <p className="text-[var(--gray-text-color)] text-sm">
+      <p className="min-w-fit text-[var(--gray-text-color)] text-sm">
         {convertTo12HourFormat(extractTimeFromDate(time))}
       </p>
       <div className="flex justify-center items-center">

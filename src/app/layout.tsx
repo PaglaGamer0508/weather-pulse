@@ -1,3 +1,6 @@
+import MenuSlide from "@/components/MenuSlide";
+import Navbar from "@/components/Navbar";
+import TaskBar from "@/components/TaskBar";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -13,7 +16,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="max-w-[1500px] mx-auto">{children}</body>
+      <body className="max-w-[1500px] mx-auto">
+        <div className="flex gap-x-3 lg:gap-x-5 p-2 h-screen">
+          <MenuSlide />
+          <div className="hidden sm:block">
+            <Navbar />
+          </div>
+          <div className="flex-1">
+            <div className="h-full">
+              <div className="h-12 py-1">
+                <TaskBar className="h-full" />
+              </div>
+              <div className="h-[91%]">{children}</div>
+            </div>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }

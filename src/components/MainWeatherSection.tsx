@@ -1,14 +1,18 @@
+"use client";
+
+import { lato } from "@/fonts/lato";
 import { formatDateTime } from "@/lib/formatDateTime";
 import { replaceDimensions } from "@/lib/replaceDimensions";
 import { CloudRain, Sun, Thermometer, Wind } from "lucide-react";
-import { lato } from "@/fonts/lato";
 import Image from "next/image";
+import React from "react";
 import MoreWeatherInfoCard from "./MoreWeatherInfoCard";
 
 // local icons
 import HumidityIcon from "@/../public/humidity.png";
 import SunriseIcon from "@/../public/sunrise.png";
 import SunsetIcon from "@/../public/sunset.png";
+import { usePathname } from "next/navigation";
 
 interface MainWeatherSectionProps {
   weather: WeatherData;
@@ -29,7 +33,7 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
   const biggerIcon = replaceDimensions(current.condition.icon);
 
   return (
-    <div className="w-full lg:w-[65%] flex flex-col gap-y-3">
+    <div className="w-full lg:w-[65%] flex flex-col gap-y-4">
       {/* ******************** Weather section ******************** */}
       <div className="h-[30%] flex justify-between rounded-[var(--primary-border-radius)] px-3 py-2 lg:px-12 lg:py-4">
         <div className="flex flex-col justify-between">
@@ -50,10 +54,12 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
             <h1
               className={`${lato.className} text-[2rem] md:text-[3rem] text-[var(--selected-text-color)]`}
             >
+              {/* this is possiblely the issue */}
               {current.temp_c}°
             </h1>
           </div>
         </div>
+
         <div className="flex flex-col justify-center items-center">
           <Image
             src={`https:${biggerIcon}`}
@@ -127,7 +133,7 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
             <h1
               className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl pl-8`}
             >
-              {current.wind_kph}km/h
+              {current.wind_kph}
             </h1>
           </div>
 

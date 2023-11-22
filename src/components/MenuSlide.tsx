@@ -27,14 +27,14 @@ const MenuSlide = () => {
     <div
       className={`${
         menuIsOpen ? "block" : "hidden"
-      } sm:hidden fixed inset-0 flex bg-gray-900/80 z-10`}
+      } sm:hidden fixed inset-0 flex bg-gray-900/80 z-[999]`}
     >
       <div
         className={`${
           menuSliderIsOpen ? "" : "-translate-x-full"
-        } transition-transform duration-75 flex bg-[var(--bg-color)] h-full w-[70%] p-2`}
+        } transition-transform duration-75 flex bg-[var(--bg-color)] h-full w-[80%] p-2`}
       >
-        <div className="relative h-full w-fit z-20">
+        <div className="relative h-full w-fit">
           <Navbar />
         </div>
       </div>
