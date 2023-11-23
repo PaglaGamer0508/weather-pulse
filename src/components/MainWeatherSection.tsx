@@ -133,7 +133,7 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
             <h1
               className={`${lato.className} text-[var(--lightgray-text-color)] text-3xl pl-8`}
             >
-              {current.wind_kph}
+              {current.wind_kph}km/h
             </h1>
           </div>
 
