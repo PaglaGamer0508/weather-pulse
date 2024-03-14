@@ -16,6 +16,7 @@ const SeachInput: React.FC = () => {
     <>
       <form className="h-full" onSubmit={handleSubmit}>
         <input
+          spellCheck="false"
           onChange={(e) => setSearchInput(e.target.value)}
           value={searchInput}
           type="text"

@@ -2,7 +2,7 @@ import WeatherSection from "@/components/WeatherSection";
 import { fetchWeatherData } from "@/lib/fetchWeatherData";
 
 const page: React.FC = async () => {
-  const location = "new york";
+  const location = "dhaka";
 
   const weatherData = await fetchWeatherData(location);
 

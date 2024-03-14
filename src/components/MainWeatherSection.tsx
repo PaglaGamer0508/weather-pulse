@@ -2,7 +2,7 @@
 
 import { lato } from "@/fonts/lato";
 import { formatDateTime } from "@/lib/formatDateTime";
-import { replaceDimensions } from "@/lib/replaceDimensions";
+import { replaceImageDimensions } from "@/lib/replaceImageDimensions";
 import { CloudRain, Sun, Thermometer, Wind } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -30,7 +30,7 @@ const MainWeatherSection: React.FC<MainWeatherSectionProps> = ({ weather }) => {
   const humidity = current.humidity;
 
   // modifiers
-  const biggerIcon = replaceDimensions(current.condition.icon);
+  const biggerIcon = replaceImageDimensions(current.condition.icon);
 
   return (
     <div className="w-full lg:w-[65%] flex flex-col gap-y-4">

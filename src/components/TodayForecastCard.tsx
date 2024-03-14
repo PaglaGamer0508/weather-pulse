@@ -1,6 +1,6 @@
 import { convertTo12HourFormat } from "@/lib/convertTo12HourFormat";
 import { extractTimeFromDate } from "@/lib/extractTimeFromDate";
-import { replaceDimensions } from "@/lib/replaceDimensions";
+import { replaceImageDimensions } from "@/lib/replaceImageDimensions";
 import { lato } from "@/fonts/lato";
 import Image from "next/image";
 import React from "react";
@@ -25,7 +25,7 @@ const TodayForecastCard: React.FC<TodayForecastCardProps> = ({
       </p>
       <div className="flex justify-center items-center">
         <Image
-          src={`https:${replaceDimensions(icon)}`}
+          src={`https:${replaceImageDimensions(icon)}`}
           alt="Weather Icon"
           width={128}
           height={128}
